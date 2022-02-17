@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Blogs | Cosmic Coders</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Sora', sans-serif;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 40px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+
+    /* NAVBAR */
+
+
+    .navbar {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-family: 'Sora', sans-serif;
+        font-weight: 400;
+        background-color: white;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 4%);
+
+    }
+
+
+    .nav-link:hover {
+        border-bottom: 2.5px solid black;
+        padding-top: 8px;
+        padding-bottom: 5.5px;
+        transition: all;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        font-size: 15px;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .navbar-nav>li {
+        padding-left: 12px;
+        padding-right: 12px;
+
+    }
+
+    /* Fill button styling */
+    .fill {
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+        padding: 10px 20px 10px;
+        outline: 0;
+        border: 1px solid black;
+        cursor: pointer;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .fill::after {
+        content: "";
+        background-color: rgb(55, 112, 255);
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        top: 7px;
+        left: 7px;
+        transition: 0.2s;
+    }
+
+    .fill:hover::after {
+        top: 0px;
+        left: 0px;
+    }
+
+    .bg-light {
+        background-color: white;
+
+    }
+
+
+    .container {
+
+        margin-top: 8.7%;
+        margin-bottom: 10%;
+
+    }
+
+    .blogheading {
+        padding-bottom: 2.5%;
+        text-align: left;
+    }
+
+    .blog {
+
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 3rem;
+    }
+
+    .blogcard {
+        background-color: #FAFAFA;
+        color: black;
+        padding: 1rem;
+        height: 500px;
+        padding: 30px;
+        border: 0;
+        border-radius: 0px;
+    }
+
+    .blogcard:hover {
+        box-shadow: 0 12px 24px -6px rgba(45, 67, 121, .1) !important;
+        border: 1.5px solid black;
+    }
+
+    .blod-mini-heading {
+        padding-bottom: 15px;
+        padding-top: 20px;
+        line-height: 1.5pc;
+    }
+
+
+    /* FOTTER */
+
+
+    .footer-container {
+        background-color: #FAFAFA;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-top: 3%;
+    }
+
+
+    .footer-list-tags {
+        font-size: 15px;
+        text-decoration: none;
+        font-weight: 300;
+        line-height: 1;
+        list-style-type: none;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .footer-card-heading {
+        padding-bottom: 15px;
+        padding-top: 20px;
+        line-height: 1.5pc;
+    }
+
+    .footer-heading {
+        text-align: right;
+        padding-bottom: 5%;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: 300;
+        line-height: 2;
+    }
+
+    /* JAVASCRIPT UPPER FOOTER BUTTON */
+
+
+    #footerbutton {
+        font-family: 'Sora', sans-serif;
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        border-radius: 100px;
+        width: 50px;
+        height: 50px;
+    }
+
+    /* END FOOTER BUTTON */
+
+    /* FOOTER END */
+
+    /* Screen larger than 600px? 2 column */
+    @media (min-width: 600px) {
+        .blog {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Screen larger than 900px? 3 columns */
+    @media (min-width: 900px) {
+        .blog {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 800px) {
+        .container {
+            margin-top: 50%;
+        }
+    }
+</style>
+
+<body>
+
+    <!--NAVBAR SECTION-->
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="cosmiccoders.html">Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="joinus.html">Join our Club</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">Connect Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contests.html">Contests</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <button type="button" class="fill">Login</button>
+    </nav>
+
+
+    <!--BLOG SECTION-->
+
+
+    <div class="container" data-aos="fade-down">
+        <div class="blogheading">
+            <h2>Blogs</h2>
+        </div>
+        <div class="blog">
+            <div class="blogcard">
+                <div>
+                    <img src="img/one.png" alt="" width="80px" height="auto">
+                </div>
+                <div class="blog-mini-heading">
+                    <h5>Profile
+                        Readiness</h5>
+                </div>
+                <p style="font-size: 15px; font-weight: 300; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit.
+                    Enim ad adipisci
+                    doloribus explicabo ab
+                    fugiat, eius labore minus asperiores assumenda? Velit molestias rerum itaque dolor accusamus
+                    laudantium unde ducimus alias?</p>
+            </div>
+
+            <div class="blogcard">
+                <div>
+                    <img src="img/one.png" alt="" width="80px" height="auto">
+                </div>
+                <div class="blog-mini-heading">
+                    <h5>Profile
+                        Readiness</h5>
+                </div>
+                <p style="font-size: 15px; font-weight: 300; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit.
+                    Enim ad adipisci
+                    doloribus explicabo ab
+                    fugiat, eius labore minus asperiores assumenda? Velit molestias rerum itaque dolor accusamus
+                    laudantium unde ducimus alias?</p>
+            </div>
+
+            <div class="blogcard">
+                <div>
+                    <img src="img/one.png" alt="" width="80px" height="auto">
+                </div>
+                <div class="blog-mini-heading">
+                    <h5>Profile
+                        Readiness</h5>
+                </div>
+                <p style="font-size: 15px; font-weight: 300; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit.
+                    Enim ad adipisci
+                    doloribus explicabo ab
+                    fugiat, eius labore minus asperiores assumenda? Velit molestias rerum itaque dolor accusamus
+                    laudantium unde ducimus alias?</p>
+            </div>
+
+            <div class="blogcard">
+                <div>
+                    <img src="img/one.png" alt="" width="80px" height="auto">
+                </div>
+                <div class="blog-mini-heading">
+                    <h5>Profile
+                        Readiness</h5>
+                </div>
+                <p style="font-size: 15px; font-weight: 300; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit.
+                    Enim ad adipisci
+                    doloribus explicabo ab
+                    fugiat, eius labore minus asperiores assumenda? Velit molestias rerum itaque dolor accusamus
+                    laudantium unde ducimus alias?</p>
+            </div>
+
+            <div class="blogcard">
+                <div>
+                    <img src="img/one.png" alt="" width="80px" height="auto">
+                </div>
+                <div class="blog-mini-heading">
+                    <h5>Profile
+                        Readiness</h5>
+                </div>
+                <p style="font-size: 15px; font-weight: 300; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit.
+                    Enim ad adipisci
+                    doloribus explicabo ab
+                    fugiat, eius labore minus asperiores assumenda? Velit molestias rerum itaque dolor accusamus
+                    laudantium unde ducimus alias?</p>
+            </div>
+
+            <div class="blogcard">
+                <div>
+                    <img src="img/one.png" alt="" width="80px" height="auto">
+                </div>
+                <div class="blog-mini-heading">
+                    <h5>Profile
+                        Readiness</h5>
+                </div>
+                <p style="font-size: 15px; font-weight: 300; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit.
+                    Enim ad adipisci
+                    doloribus explicabo ab
+                    fugiat, eius labore minus asperiores assumenda? Velit molestias rerum itaque dolor accusamus
+                    laudantium unde ducimus alias?</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="row">
+                <div class="col-sm">
+                    <img src="pp.jfif" alt="" height="auto" width="200px">
+                    <h4 style="padding-bottom: 15px; padding-top: 20px; line-height: 1.7; padding-right: 30px;">Enhance
+                        with CosmicCoders
+                    </h4>
+                </div>
+                <div class="col-sm">
+                    <div class="footer-card-heading">
+                        <h4>
+                            Organisation
+                        </h4>
+                    </div>
+                    <ul class="footer-list-tags">
+                        <li><a href="">About us</a></li>
+                        <li><a href="https://github.com/cosmiccodrs">Active Projects</a></li>
+                        <li><a href="">Events</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-sm">
+                    <div class="footer-card-heading">
+                        <h4>Projects</h4>
+                    </div>
+                    <ul class="footer-list-tags">
+                        <li><a href="">Apply to join</a></li>
+                        <li><a href="">Articles</a></li>
+                        <li><a href="">Contribute Directly</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-sm">
+                    <div class="footer-card-heading">
+                        <h4>Contact Us</h4>
+                    </div>
+                    <p
+                        style="font-weight: 400; font-family: 'Montserrat', sans-serif;   font-size: 15px; line-height: 1.8;">
+                        cosmiccodersofficial@gmail.com
+                        (AIMT) Campus, Lucknow, Uttar Pradesh - 22630
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div
+                style="font-weight: 400; font-family: 'Montserrat', sans-serif;  padding-bottom: 5px; text-align: center;">
+                <p>
+                    Made with
+                    <span> &#128151;</span> in India | Copyright © 2022 Cosmic Coders Community.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!--FOOTER JAVASCRIPT UPPER BUTTON -->
+    <button onclick="topFunction()" id="footerbutton" title="Go to top"><span>&#8702;</span></button>
+
+
+    <!--JAVA SCRIPT STARTS HERE-->
+    <script>
+
+        var mybutton = document.getElementById("footerbutton");
+
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!--FOOTER JAVASCRIPT UPPPOR NBUTTON END-->
+
+
+    <script>
+        AOS.init();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
